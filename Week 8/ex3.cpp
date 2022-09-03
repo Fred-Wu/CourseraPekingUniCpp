@@ -13,30 +13,32 @@ using namespace std;
 int main() {
     
     int N, K;
-    cin >> N >> K;
-    
-    double pct_K = double(K) / 100.0;
-    
-    int n_year = 1;
-    int current_saving = N;
-    int current_price = 200;
+    while (cin >> N >> K){
+        
+        float pct_K = float(K) / 100.0;
 
-    while (current_saving < current_price) {
+        int n_year = 1;
+        int current_saving = N;
+        float current_price = 200;
 
-        n_year++;
-        current_saving = N * n_year;
-        current_price = current_price * (1 + pct_K);
+        while (current_saving < current_price) {
 
-        if ((current_saving >= current_price) && n_year <= 20) {
-            cout << n_year << endl;
-            break;
+            n_year++;
+            current_saving = current_saving + N;
+            current_price = current_price * (1 + pct_K);
+
+            if (current_saving >= current_price) {
+                cout << n_year << endl;
+                break;
+            }
+            
+            if (n_year > 20) {
+                cout << "Impossible" << endl;
+                break;
+            }
         }
 
-        if (n_year > 20) {
-            cout << "Impossible" << endl;
-            break;
-        }
     }
-
+    
     return 0;
 }
