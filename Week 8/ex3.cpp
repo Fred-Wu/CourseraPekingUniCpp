@@ -13,6 +13,7 @@ using namespace std;
 int main() {
     
     int N, K;
+    // continuous input
     while (cin >> N >> K){
         
         float pct_K = float(K) / 100.0;
