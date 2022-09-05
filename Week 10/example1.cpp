@@ -8,11 +8,22 @@ int main() {
     int n;
     cin >> n;
     
-    int num[n];
+    int num, count[10] = {0};
     
     for (int i = 0; i < n; i++) {
-        
+        cin >> num;
+        //for (int j = 0; j < 10; j++) {
+        //    if (num == j) count[j]++;
+        //}
+        count[num]++; // simpler way
     }
+    
+    for (int i = 0; i < 10; i++) {
+        if (count[i] != 0)
+            cout << i << " has " << count[i] << " times input." << endl;
+    }
+
+  
     
     return 0;
 }
