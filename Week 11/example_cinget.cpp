@@ -5,8 +5,10 @@ using namespace std;
 int main() {
     char c;
     cout << "enter a sentence: " << endl;
-    while((c = cin.get()) != EOF)  //EOF: end of file, 空格不省略
-        cout << c;
+    //while((c = cin.get()) != EOF)  //EOF: end of file, 空格不省略
+    //    cout << c;
+    
+    while (cin.get(c)) cout << c;
     
     return 0;
 }
