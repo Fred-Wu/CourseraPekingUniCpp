@@ -24,11 +24,15 @@ int main() {
         if (s[i] == ' ') {
             flag = 0;
         } else if (s[i] != ' ' && flag == 0) {
+            // reset new word counter
             flag = 1;
             indx = i;
             len = 1;
         } else {
             len++;
+            // compare cumulative word length with previous length
+            // assign the word start index if the maximum length in 
+            // one word greater than all other words. 
             if (len > length) {
                 length = len;
                 start = indx;
