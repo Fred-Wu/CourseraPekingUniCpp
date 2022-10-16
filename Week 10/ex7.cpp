@@ -12,52 +12,85 @@
 #include <iostream>
 using namespace std;
 
-int main() {
-    
-    int N, median_even[2], median_odd;
-    
+int main()
+{
+
+    int N;
+    int result[100] = {0};
+
+    int cnt = 0;
     while (cin >> N)
     {
-        if (N == 0) break;
-        else 
+
+        if (N == 0)
+            break;
+
+        else
         {
-            int res = N % 2;
-            
             int data[N];
+            int cnt_gt[N];
+
+            int sum = 0;
+            int num = 0;
+
             for (int i = 0; i < N; i++)
+            {
                 cin >> data[i];
-            
-            int num_gt = 0;
-            for (int i = 0; i < N; i++) {
-                for (int j = 0; j < N; j++) {
-                    if (i == j) continue;
-                    else if(data[i] > data[j]) {
-                        num_gt++; // count numbers less than the current value
-                    }
-                }
-                if (res == 0) {
-                    //if the seq is even, then median would be the middle two
-                    //which are greater than N/2-1 numbers and N/2 numbers
-                    if (num_gt == N/2 - 1)
-                        median_even[0] = data[i];
-                    if (num_gt == N/2)
-                        median_even[1] = data[i];
-                } else {
-                    //if the seq is odd, then median would be the middle one
-                    //which is greater than N/2 numbers
-                    if (num_gt == N/2)
-                        median_odd = data[i];
-                }
-                num_gt = 0;
+                cnt_gt[i] = 0;
             }
 
-            if (res == 0) {
-                cout << (median_even[0] + median_even[1])/2 << endl;
-            } else 
-                cout << median_odd << endl;
-        }
+            int num_gt = 0;
 
-    }   
-    
+            int res = N % 2;
+
+            for (int i = 0; i < N; i++)
+            {
+                for (int j = i; j < N; j++)
+                {
+                    if (i == j)
+                        continue;
+                    else if (data[i] > data[j])
+                        cnt_gt[i]++;
+                    else if (data[i] == data[j])
+                    {
+                        cnt_gt[i]++;
+                    }
+                    else
+                        cnt_gt[j]++;
+                }
+            }
+
+            if (res == 0)
+            {
+                for (int i = 0; i < N; i++)
+                {
+                    if (cnt_gt[i] == N / 2 || cnt_gt[i] == N / 2 - 1)
+                    {
+                        sum += data[i];
+                        num++;
+                    }
+                }
+            }
+            else
+            {
+                for (int i = 0; i < N; i++)
+                {
+                    if (cnt_gt[i] == N / 2)
+                    {
+                        sum += data[i];
+                        num++;
+                    }
+                }
+            }
+            result[cnt] = sum / num;
+        }
+        cnt++;
+    }
+
+    for (int i = 0; i < cnt; i++)
+    {
+        cout << result[i] << endl;
+    }
+
     return 0;
 }

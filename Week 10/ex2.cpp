@@ -10,21 +10,26 @@
 //如果两个字符串相等，输出一个字符 "="
 
 #include <iostream>
-    using namespace std;
+#include <string.h>
+
+    
+using namespace std;
 
 int main() {
     
     char s1[80];
     char s2[80];
-    
+    char result;
     cin.getline(s1, 80);
     cin.getline(s2, 80);
-    
+
     if (strcasecmp(s1, s2) < 0) 
-        cout << "<" << endl;
+        result  = '<' ;
     else if(strcasecmp(s1, s2) == 0)
-        cout << "=" << endl;
-    else cout << ">" << endl;
+        result = '=';
+    else result = '>';
+    
+    cout << result << endl;
     
     return 0;
 }
