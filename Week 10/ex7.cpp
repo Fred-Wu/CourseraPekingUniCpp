@@ -49,12 +49,8 @@ int main()
                 {
                     if (i == j)
                         continue;
-                    else if (data[i] > data[j])
+                    else if (data[i] >= data[j])
                         cnt_gt[i]++;
-                    else if (data[i] == data[j])
-                    {
-                        cnt_gt[i]++;
-                    }
                     else
                         cnt_gt[j]++;
                 }
