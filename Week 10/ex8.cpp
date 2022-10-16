@@ -11,25 +11,35 @@
 //输出包括一行，这一行只包含一个整数，表示马路上剩余的树的数目。
 
 #include <iostream>
-
 using namespace std;
 
 int main() {
     
-    int N, M;
-    cin >> N >> M;
-    
-    //input matrix
-    int A[M][2];
+    int L, M; 
+    cin >> L >> M;
+
+    int trees[L+1];
+
+    int start, end;
+
+    for (int i = 0; i <= L; i++) 
+        trees[i] = 1;
+
     for (int i = 0; i < M; i++) {
-        for(int j = 0; j < 2; j++) {
-            cin >> A[i][j];
+        cin >> start >> end;
+        for (int j = start; j <= end; j++) {
+            if (trees[j] == 1) 
+                trees[j] = 0;
         }
     }
     
-    //check nesting if (A[j][1] > A[j-1][1] && A[j][1] < A[j-1][2]) && 
+    int num_remain = 0; 
+    for (int i = 0; i <= L; i++) {
+        if (trees[i] == 1)
+            num_remain++;
+    }
     
-    
+    cout << num_remain << endl;
     
     return 0;
 }
