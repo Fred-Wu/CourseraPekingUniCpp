@@ -28,7 +28,7 @@ int main() {
     
     int tmp[5];
     
-    if (n < 5 && m < 5) {
+    if ((n < 5 && n >= 0) && (m < 5 && m >= 0)) {
         for (int j = 0; j < 5; j++) {
             tmp[j] = mat[n][j];      //swap rows
             mat[n][j] = mat[m][j];
