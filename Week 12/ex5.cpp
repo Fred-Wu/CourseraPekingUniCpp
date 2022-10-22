@@ -16,27 +16,33 @@ using namespace std;
 int main() {
     
     char str[10], substr[3];
-    
+   
 
     while(cin >> str >> substr) {
+        
+        int str_len = strlen(str);
+        
+        int max = str[0];
         int maxIndex = 0;
-        for (int i = 0; str[i] != '\0'; i++) {
-        for (int j = i; str[j] != '\0'; j++) {
-            if (i == j) continue;
-            else {
-                if (str[i] > str[j]) {
-                    maxIndex = i;
-                } else maxIndex = maxIndex;
+        for (int i = 1; str[i] != '\0'; i++) {
+            if (max < str[i]) {
+                max = str[i];
+                maxIndex = i;
             }
         }
-        }
         
-        char concat[maxIndex];
-        char strsep[10-maxIndex-1];
+        char concat[maxIndex+1];
+        char strsep[str_len-maxIndex];
         
         for (int i = 0; i <= maxIndex; i++) concat[i] = str[i];
+        concat[maxIndex+1] = '\0';
+        
         for (int j = maxIndex + 1; str[j] != '\0'; j++) strsep[j-maxIndex-1] = str[j];
         
+        strsep[str_len - maxIndex - 1] = '\0';
+        strsep[str_len-maxIndex] = '\0';
+        
+  
         strcat(strcat(concat, substr), strsep);
         
         cout << concat << endl;

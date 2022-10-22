@@ -14,7 +14,7 @@ using namespace std;
 
 int main() {
     
-    double a, b;
+    int a, b;
     char op;
     cin >> a >> b >> op;
     
