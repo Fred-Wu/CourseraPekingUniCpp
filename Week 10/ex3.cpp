@@ -12,14 +12,18 @@ using namespace std;
 
 int main() {
     
-    char s[500];
-    cin.getline(s, 500, '.');
-    
+    int input_len = 500;
+    char s[input_len];
+
+    cin.getline(s, input_len, '.');
+
     int flag = 0;
     int indx, len;
     int length = 0, start;
     
     for (int i = 0; s[i] != '\0'; i++) {
+        
+        if (s[i] == '\n') continue;
         
         if (s[i] == ' ') {
             flag = 0;
@@ -37,12 +41,18 @@ int main() {
                 length = len;
                 start = indx;
             }
-        }       
+        }
+
     }
 
-    for (int i = start; i < (start + length); i++) {
-        cout << s[i];
-    }
-    cout << endl;
+    char out[length];
+
+    for (int i = start; i < (start + length); i++)
+        out[i - start] = s[i];
+        
+    out[length] = '\0';
+    cout << out << endl;
+
     return 0;
 }
+
